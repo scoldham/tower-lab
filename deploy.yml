@@ -1,0 +1,18 @@
+- hosts: scoldham1
+  become: yes
+  tasks:
+  - name: deploy app binary
+    copy:
+      src: /home/user/apps/hello
+      dest: /var/www/html/hello
+    tags:
+      - webdeploy
+- hosts: scoldham2
+  become: yes
+  tasks:
+  - name: deploy db script
+    copy:
+      src: /home/user/apps/script.sql
+      dest: /opt/db/scripts/script.sql
+    tags:
+      - dbdeploy
